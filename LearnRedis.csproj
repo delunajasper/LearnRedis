@@ -10,9 +10,4 @@
       <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.2" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Compile Include="Data\IPlatformRepository.cs" />
-      <Compile Include="Data\RedisPlatformRepository.cs" />
-    </ItemGroup>
-
 </Project>

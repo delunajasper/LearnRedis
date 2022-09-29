@@ -25,13 +25,15 @@ public class RedisPlatformRepository : IPlatformRepository
         var searilizePlatform = JsonSerializer.Serialize(platform);
 
         db.StringSet(platform.Id, searilizePlatform);
-
-
     }
 
-    public Platform GetPlatform(string id)
+    public Platform? GetPlatform(string id)
     {
-        throw new NotImplementedException();
+        var db = _redis.GetDatabase();
+
+        var platform = db.StringGet(id);
+
+        return !string.IsNullOrEmpty(platform) ? JsonSerializer.Deserialize<Platform>(platform) : null;
     }
 
     public IEnumerable<Platform> GetAllPlatforms()
